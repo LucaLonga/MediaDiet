@@ -1,0 +1,299 @@
+:root {
+  --unit: calc(100vh / 420 * 2.5);
+  --font-unit: calc(1vh * (297 / var(--height)));
+  --width: 420;
+  --height: 297;
+
+  --text-size: calc(var(--font-unit) * 1.3);
+  --title-size: calc(var(--text-size) * 2.5);
+  --subhead-size: calc(var(--text-size) * 1.8);
+  --page-number-size: calc(var(--text-size) * 0.8);
+
+  --riso: #00838a;
+  --pagewhite: #f4f4f4;
+  --font-color: var(--riso);
+
+  --riso-rgb: 0, 131, 138;
+
+  --riso-opaque-100: rgba(var(--riso-rgb), 1);
+  --riso-opaque-80: rgba(var(--riso-rgb), 0.8);
+  --riso-opaque-60: rgba(var(--riso-rgb), 0.6);
+  --riso-opaque-40: rgba(var(--riso-rgb), 0.4);
+  --riso-opaque-20: rgba(var(--riso-rgb), 0.2);
+
+  --margin-small: calc(var(--unit) * 0.5);
+  --margin-medium: calc(var(--unit) * 1);
+  --padding-small: calc(var(--unit) * 0.5);
+  --padding-large: calc(var(--unit) * 1.5);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+  color: var(--font-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Sneaky-Times";
+  src: local("Sneaky-Times"), url("/font/Sneaky-Times.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBMPlexMono-Medium";
+  src: local("IBMPlexMono-Medium"), url("/font/IBMPlexMono-Medium.ttf") format("ttf");
+}
+
+body {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Sneaky-Times", serif;
+  font-variant-ligatures: common-ligatures;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-medium);
+  margin: var(--margin-medium) 0;
+}
+
+#FrontCover {
+  position: relative;
+  overflow: hidden;
+  width: calc(var(--width) * var(--unit) / 2);
+  height: calc(var(--height) * var(--unit) / 3);
+}
+
+.CoverTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-size: calc(var(--title-size) * 2);
+  font-weight: 900;
+  text-align: center;
+  color: var(--font-color);
+  border-radius: 4px;
+}
+
+.ascii {
+  font-family: "IBMPlexMono-Medium";
+  line-height: 0.25;
+  font-stretch: 150%;
+  font-size: calc(var(--text-size) * 1.6);
+  text-align: center;
+}
+
+#BackCover {
+  position: relative;
+  overflow: hidden;
+  width: calc(var(--width) * var(--unit) / 2);
+  height: calc(var(--height) * var(--unit) / 5);
+  background: repeating-conic-gradient(var(--pagewhite), var(--riso-opaque-20), var(--pagewhite) 0.1deg);
+}
+
+.white {
+  background-color: var(--pagewhite);
+}
+
+.Quote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-size: calc(var(--font-unit) * 2);
+  font-weight: 900;
+  text-align: left;
+  color: var(--font-color);
+  border-radius: 4px;
+}
+
+.page {
+  width: calc(var(--width) * var(--unit) / 4);
+  height: calc(var(--height) * var(--unit) / 2);
+  border: 1px solid #0a0a0a;
+  background-color: var(--pagewhite);
+}
+
+.pageNumber {
+  position: absolute;
+  font-family: "IBMPlexMono-Medium";
+  font-size: calc(var(--page-number-size) * 2);
+  margin: 4mm;
+  z-index: 999;
+  pointer-events: none;
+  color: var(--font-color);
+}
+
+.page-2 .pageNumber,
+.page-4 .pageNumber,
+.page-6 .pageNumber {
+  top: 0;
+  left: 0;
+}
+
+.page-1 .pageNumber,
+.page-3 .pageNumber,
+.page-5 .pageNumber,
+.page-7 .pageNumber {
+  top: 0;
+  right: 0;
+}
+
+.title {
+  margin-top: calc(var(--unit) * 9);
+  margin-bottom: var(--margin-small);
+  text-align: center;
+  font-size: var(--title-size);
+  font-weight: bold;
+  color: var(--font-color);
+  outline-style: dotted;
+  outline-offset: 5px;
+  outline-width: 1px;
+  display: block;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.paragraph {
+  border: 1px solid var(--font-color);
+  border-radius: 0px 10px 10px 10px;
+  margin: calc(var(--unit) * 4);
+  padding: calc(var(--unit) * 2);
+  font-size: calc(var(--text-size));
+  line-height: 1.5;
+  color: var(--font-color);
+  background-color: var(--pagewhite);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: calc(var(--unit) * 75);
+  overflow: auto;
+}
+
+.Subhead {
+  font-size: var(--subhead-size);
+  padding-left: calc(var(--unit) * 5);
+}
+
+.pyramid-container {
+  width: calc(var(--width) * var(--unit) / 4);
+  height: calc(var(--height) * var(--unit) / 2);
+  display: grid;
+  padding: calc(var(--unit) *4);
+}
+
+.pyramidSubhead {
+  text-align: center;
+  height: calc(var(--subhead-size) *2);
+}
+
+#pyramid-top {
+  border-bottom: calc(var(--unit) *35) solid var(--riso-opaque-40);
+  border-left: calc(var(--unit) *10) solid transparent;
+  border-right: calc(var(--unit) *10) solid transparent;
+  height: 0;
+  width: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  align-self: center;
+  z-index: 1;
+}
+
+.stage-1 {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin-bottom: var(--margin-medium);
+  overflow: hidden;
+}
+
+.keyword {
+  position: absolute;
+  z-index: 10;
+  font-size: var(--text-size);
+  font-weight: bold;
+  color: var(--font-color);
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  transition: font-size 0.3s ease-in-out;
+
+}
+
+.stage-1 .keyword.long {
+  white-space: normal;
+  word-break: break-word;
+  text-align: left;
+}
+
+.stage-1.scaled .keyword {
+  font-size: calc(var(--text-size) * 0.8);
+}
+
+#pyramid-middle-up {
+  border-bottom: calc(var(--unit) *35) solid var(--riso-opaque-40);
+  border-left: calc(var(--unit) *10) solid transparent;
+  border-right: calc(var(--unit) *10) solid transparent;
+  height: 0;
+  width: calc(var(--unit) *54);
+  margin-right: auto;
+  margin-left: auto;
+  align-self: center;
+}
+
+#pyramid-middle-down {
+  border-bottom: calc(var(--unit) *35) solid var(--riso-opaque-40);
+  border-left: calc(var(--unit) *10) solid transparent;
+  border-right: calc(var(--unit) *10) solid transparent;
+  height: 0;
+  width: calc(var(--unit) *74);
+  margin-right: auto;
+  margin-left: auto;
+  align-self: center;
+}
+
+#pyramid-base {
+  border-bottom: calc(var(--unit) *35) solid var(--riso-opaque-40);
+  border-left: calc(var(--unit) *10) solid transparent;
+  border-right: calc(var(--unit) *10) solid transparent;
+  height: 0;
+  width: calc(var(--unit) *94);
+  margin-right: auto;
+  margin-left: auto;
+  align-self: center;
+}
+
+.facing-A,
+.facing-B,
+.facing-C {
+  position: relative;
+  overflow: hidden;
+}
+
+.facing {
+  display: flex;
+}
+
+.facing .page {
+  margin: 0;
+}
+
+@page {
+  size: A3 landscape;
+  margin: 0;
+}
